@@ -1,10 +1,17 @@
 const express = require('express');
 const cors = require('cors');
+const path = require('path');
 const app = express();
 const port = process.env.PORT || 3000;
 
 app.use(cors());
 app.use(express.json());
+app.use(express.static(__dirname));
+
+// ROUTE PRINCIPALE - Affiche distant.html
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'distant.html'));
+});
 
 // ============================================
 // CONSTANTES DU JEU
@@ -319,6 +326,7 @@ setInterval(() => {
     }
 }, 300000);
 
+// DÉMARRAGE DU SERVEUR
 app.listen(port, () => {
-    console.log(`✅ Serveur Songo'O - http://localhost:${port}`);
+    console.log(`✅ Serveur Songo'O Distance - http://localhost:${port}`);
 });
