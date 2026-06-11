@@ -417,7 +417,6 @@
         .nav-item.active { color: #E5A93C; }
         .nav-item:hover { color: #CF9B52; transform: translateY(-2px); }
         
-        /* PANELS */
         .aide-panel, .settings-panel {
             position: fixed;
             top: 50%;
@@ -791,7 +790,7 @@
 
 <script>
     // ============================================
-    // CONFIGURATION - URL du serveur Render (CORRIGÉE)
+    // CONFIGURATION - URL CORRECTE DU SERVEUR RENDER
     // ============================================
     const SERVER_URL = 'https://songo-2lxr.onrender.com';
     
@@ -969,7 +968,7 @@
             startGameLoop();
             waitForOpponent();
         } catch(e) { 
-            alert("Erreur de connexion au serveur. Vérifie que le serveur est lancé.");
+            alert("Erreur de connexion au serveur.");
             console.error(e);
         }
     };
