@@ -968,7 +968,10 @@
             updateConnectionStatus('🟡 En attente d\'un adversaire...', 'waiting');
             startGameLoop();
             waitForOpponent();
-        } catch(e) { alert("Erreur de connexion au serveur"); }
+        } catch(e) { 
+            alert("Erreur de connexion au serveur. Vérifie que le serveur est lancé.");
+            console.error(e);
+        }
     };
     
     // ============================================
@@ -1006,7 +1009,10 @@
                 startGameLoop();
                 waitForGameStart();
             }
-        } catch(e) { alert("Salle introuvable"); }
+        } catch(e) { 
+            alert("Salle introuvable ou erreur de connexion");
+            console.error(e);
+        }
     };
     
     // ============================================
