@@ -2,12 +2,10 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>SONGO'O - L'HÉRITAGE</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        
         body {
             background: #0a0a0a;
             font-family: 'Inter', sans-serif;
@@ -16,38 +14,7 @@
             justify-content: center;
             align-items: center;
             padding: 15px;
-            position: relative;
         }
-        
-        /* RESPONSIVE POUR TELEPHONE */
-        @media (max-width: 768px) {
-            body { padding: 8px; }
-            .container { padding: 12px; }
-            .hole { width: 40px !important; height: 40px !important; padding: 4px !important; }
-            .seed { width: 7px !important; height: 7px !important; }
-            .player-avatar { width: 40px !important; height: 40px !important; font-size: 28px !important; }
-            .player-score { font-size: 1.2rem !important; }
-            .camp-label { font-size: 0.55rem !important; min-width: 55px !important; }
-            .player-name { font-size: 0.6rem !important; }
-            .btn, .action-btn { padding: 6px 12px !important; font-size: 0.7rem !important; }
-            .avatar-icon { width: 40px !important; height: 40px !important; font-size: 28px !important; }
-            .room-input { width: 120px !important; font-size: 0.7rem !important; }
-            .dashboard { padding: 8px !important; gap: 8px !important; }
-            .player-granary { padding: 3px 8px !important; }
-            .granary-value { font-size: 0.9rem !important; }
-            .turn-indicator { padding: 5px 10px !important; }
-            .message-area { font-size: 0.7rem !important; padding: 6px !important; }
-            .holes { gap: 5px !important; }
-        }
-        
-        @media (max-width: 480px) {
-            .hole { width: 32px !important; height: 32px !important; }
-            .seed { width: 6px !important; height: 6px !important; }
-            .player-avatar { width: 32px !important; height: 32px !important; font-size: 22px !important; }
-            .player-score { font-size: 1rem !important; }
-            .camp-label { font-size: 0.5rem !important; min-width: 45px !important; }
-        }
-        
         body::before {
             content: "";
             position: fixed;
@@ -61,19 +28,6 @@
             pointer-events: none;
             z-index: 0;
         }
-        
-        body::after {
-            content: "🌴";
-            font-size: 150px;
-            color: rgba(212,175,55,0.02);
-            position: fixed;
-            bottom: -30px;
-            right: -30px;
-            pointer-events: none;
-            z-index: 0;
-            transform: rotate(-10deg);
-        }
-        
         .container {
             max-width: 950px;
             width: 100%;
@@ -85,7 +39,6 @@
             position: relative;
             z-index: 2;
         }
-        
         .header {
             display: flex;
             justify-content: space-between;
@@ -94,22 +47,18 @@
             padding-bottom: 10px;
             border-bottom: 1px solid rgba(207,155,82,0.3);
         }
-        
         .title h1 {
             font-size: 1.5rem;
             background: linear-gradient(135deg, #E5A93C, #CF9B52);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            display: inline-block;
         }
-        
         .title span {
             color: rgba(207,155,82,0.7);
             font-size: 0.6rem;
             margin-left: 8px;
         }
-        
         .btn-icon {
             background: rgba(207,155,82,0.1);
             border: 1px solid rgba(207,155,82,0.3);
@@ -119,11 +68,7 @@
             border-radius: 25px;
             cursor: pointer;
             font-size: 1rem;
-            transition: all 0.2s;
         }
-        
-        .btn-icon:hover { background: rgba(207,155,82,0.25); transform: translateY(-2px); }
-        
         .panel {
             background: rgba(0,0,0,0.4);
             border-radius: 20px;
@@ -131,9 +76,7 @@
             margin-bottom: 20px;
             text-align: center;
         }
-        
         .panel h3 { color: #E5A93C; margin-bottom: 15px; }
-        
         .avatar-grid {
             display: flex;
             flex-wrap: wrap;
@@ -141,7 +84,6 @@
             justify-content: center;
             margin: 15px 0;
         }
-        
         .avatar-opt {
             text-align: center;
             cursor: pointer;
@@ -149,12 +91,10 @@
             border-radius: 15px;
             transition: all 0.2s;
         }
-        
         .avatar-opt.selected {
             background: rgba(207,155,82,0.3);
             border: 1px solid #CF9B52;
         }
-        
         .avatar-icon {
             font-size: 40px;
             width: 60px;
@@ -165,7 +105,6 @@
             align-items: center;
             justify-content: center;
         }
-        
         .room-input {
             background: rgba(0,0,0,0.5);
             border: 1px solid rgba(207,155,82,0.3);
@@ -176,7 +115,6 @@
             width: 200px;
             font-size: 1rem;
         }
-        
         .btn {
             background: linear-gradient(135deg, #8C5A3C, #A66E4E);
             border: none;
@@ -186,23 +124,17 @@
             cursor: pointer;
             font-weight: 600;
             margin: 5px;
-            transition: all 0.2s;
         }
-        
-        .btn:hover { transform: scale(1.02); }
-        
         .room-code-display {
             font-size: 1.5rem;
             font-weight: bold;
             color: #E5A93C;
             letter-spacing: 3px;
         }
-        
         .status { padding: 8px; border-radius: 20px; font-size: 0.8rem; margin-top: 10px; }
         .online { color: #4caf50; }
         .offline { color: #f44336; }
         .waiting { color: #ff9800; }
-        
         .dashboard {
             display: flex;
             justify-content: space-between;
@@ -214,17 +146,14 @@
             flex-wrap: wrap;
             gap: 10px;
         }
-        
         .player-dashboard {
             display: flex;
             align-items: center;
             gap: 12px;
             flex: 1;
         }
-        
         .sud-dashboard { justify-content: flex-start; }
         .nord-dashboard { justify-content: flex-end; }
-        
         .player-avatar {
             font-size: 40px;
             width: 55px;
@@ -235,11 +164,9 @@
             align-items: center;
             justify-content: center;
         }
-        
         .player-info { text-align: left; }
         .player-name { font-size: 0.7rem; color: rgba(255,255,255,0.6); }
         .player-score { font-size: 1.6rem; font-weight: 600; color: #E5A93C; }
-        
         .player-granary {
             display: flex;
             align-items: center;
@@ -248,18 +175,8 @@
             padding: 5px 12px;
             border-radius: 25px;
         }
-        
-        .player-side {
-            font-size: 0.6rem;
-            padding: 2px 8px;
-            border-radius: 15px;
-            margin-top: 4px;
-            display: inline-block;
-        }
-        
-        .side-sud { background: rgba(76, 175, 80, 0.2); color: #4caf50; }
-        .side-nord { background: rgba(33, 150, 243, 0.2); color: #2196f3; }
-        
+        .side-sud { background: rgba(76,175,80,0.2); color: #4caf50; padding: 2px 8px; border-radius: 15px; font-size: 0.6rem; }
+        .side-nord { background: rgba(33,150,243,0.2); color: #2196f3; padding: 2px 8px; border-radius: 15px; font-size: 0.6rem; }
         .vs-central {
             font-size: 0.9rem;
             color: #CF9B52;
@@ -267,7 +184,6 @@
             padding: 6px 15px;
             border-radius: 25px;
         }
-        
         .turn-indicator {
             display: flex;
             justify-content: center;
@@ -276,9 +192,7 @@
             border-radius: 40px;
             padding: 8px 16px;
             margin-bottom: 20px;
-            flex-wrap: wrap;
         }
-        
         .turn-dot {
             width: 8px;
             height: 8px;
@@ -286,33 +200,26 @@
             border-radius: 50%;
             animation: pulse 1s infinite;
         }
-        
         @keyframes pulse { 0%,100% { opacity: 0.3; } 50% { opacity: 1; } }
-        
         .arrows-container {
             display: flex;
             justify-content: center;
             gap: 10px;
             margin-bottom: 20px;
-            flex-wrap: wrap;
         }
-        
         .arrow {
             color: #E5A93C;
             font-size: 1rem;
             animation: arrowFlow 1.5s infinite;
             opacity: 0.6;
         }
-        
         @keyframes arrowFlow { 0% { transform: translateX(0px); opacity: 0.3; } 50% { transform: translateX(6px); opacity: 1; } }
-        
         .board-container {
             background: linear-gradient(145deg, #0f0d0a, #050403);
             border-radius: 30px;
             padding: 20px;
             margin-bottom: 20px;
         }
-        
         .row {
             display: flex;
             align-items: center;
@@ -321,14 +228,12 @@
             margin: 10px 0;
             flex-wrap: wrap;
         }
-        
         .camp-label {
             font-size: 0.65rem;
             color: rgba(207,155,82,0.7);
             min-width: 70px;
             text-align: right;
         }
-        
         .holes {
             display: flex;
             gap: 8px;
@@ -336,7 +241,6 @@
             justify-content: center;
             flex: 1;
         }
-        
         .hole {
             background: radial-gradient(circle at 35% 35%, #3a2a1a, #0f0a05);
             border-radius: 50%;
@@ -351,19 +255,14 @@
             height: 50px;
             border: 2px solid #8C5A3C;
             box-shadow: inset 0 4px 6px rgba(0,0,0,0.5);
-            transition: all 0.2s;
         }
-        
-        .hole:hover:not(.disabled) { transform: translateY(-2px); border-color: #D4A373; }
         .hole.disabled { opacity: 0.5; cursor: not-allowed; }
-        
         .seed {
             width: 8px;
             height: 8px;
             border-radius: 50%;
             background: radial-gradient(circle at 35% 35%, #E8B86B, #B8860B, #6B4226);
         }
-        
         .message-area {
             background: rgba(0,0,0,0.4);
             border-radius: 25px;
@@ -373,14 +272,11 @@
             color: #CF9B52;
             margin-bottom: 15px;
         }
-        
         .action-buttons {
             display: flex;
             gap: 10px;
             margin-bottom: 15px;
-            flex-wrap: wrap;
         }
-        
         .action-btn {
             flex: 1;
             padding: 10px;
@@ -389,20 +285,14 @@
             color: #CF9B52;
             border: 1px solid rgba(207,155,82,0.3);
             cursor: pointer;
-            transition: all 0.2s;
         }
-        
-        .action-btn:hover { background: rgba(207,155,82,0.2); transform: translateY(-2px); }
-        
         .bottom-nav {
             display: flex;
             justify-content: space-around;
             padding: 10px;
             background: rgba(0,0,0,0.4);
             border-radius: 35px;
-            flex-wrap: wrap;
         }
-        
         .nav-item {
             display: flex;
             flex-direction: column;
@@ -411,202 +301,46 @@
             color: rgba(255,255,255,0.4);
             font-size: 0.6rem;
             cursor: pointer;
-            transition: all 0.2s;
         }
-        
         .nav-item.active { color: #E5A93C; }
-        .nav-item:hover { color: #CF9B52; transform: translateY(-2px); }
-        
-        .aide-panel, .settings-panel {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: rgba(10,8,6,0.98);
-            backdrop-filter: blur(20px);
-            border-radius: 25px;
-            width: 90%;
-            max-width: 380px;
-            z-index: 1000;
-            border: 1px solid rgba(207,155,82,0.3);
+        @media (max-width: 768px) {
+            .hole { width: 40px; height: 40px; }
+            .seed { width: 7px; height: 7px; }
+            .player-avatar { width: 40px; height: 40px; font-size: 28px; }
+            .player-score { font-size: 1.2rem; }
+            .camp-label { font-size: 0.55rem; min-width: 55px; }
         }
-        
-        .panel-header {
-            display: flex;
-            justify-content: space-between;
-            padding: 15px;
-            border-bottom: 1px solid rgba(207,155,82,0.2);
-        }
-        
-        .panel-header h3 { color: #E5A93C; }
-        .close-panel { background: none; border: none; color: rgba(255,255,255,0.5); font-size: 1.2rem; cursor: pointer; }
-        .panel-body { padding: 15px; }
-        
-        .rule {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 12px;
-            align-items: flex-start;
-        }
-        
-        .rule div { color: rgba(255,255,255,0.7); font-size: 0.7rem; line-height: 1.4; }
-        .rule strong { color: white; display: block; margin-bottom: 3px; }
-        
-        .close-panel-btn {
-            width: calc(100% - 30px);
-            margin: 0 15px 15px 15px;
-            background: rgba(207,155,82,0.15);
-            border: 1px solid rgba(207,155,82,0.3);
-            color: #CF9B52;
-            padding: 8px;
-            border-radius: 25px;
-            cursor: pointer;
-        }
-        
-        .setting-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 12px 0;
-            border-bottom: 1px solid rgba(207,155,82,0.1);
-        }
-        
-        .setting-info { display: flex; align-items: center; gap: 12px; }
-        .setting-icon { font-size: 1.3rem; }
-        .setting-info h4 { font-size: 0.85rem; color: white; }
-        .setting-info p { font-size: 0.65rem; color: rgba(255,255,255,0.5); }
-        
-        .switch {
-            position: relative;
-            display: inline-block;
-            width: 50px;
-            height: 24px;
-        }
-        
-        .switch input { opacity: 0; width: 0; height: 0; }
-        
-        .slider {
-            position: absolute;
-            cursor: pointer;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: #ccc;
-            transition: 0.3s;
-            border-radius: 24px;
-        }
-        
-        .slider:before {
-            position: absolute;
-            content: "";
-            height: 18px;
-            width: 18px;
-            left: 3px;
-            bottom: 3px;
-            background-color: white;
-            transition: 0.3s;
-            border-radius: 50%;
-        }
-        
-        input:checked + .slider { background-color: #CF9B52; }
-        input:checked + .slider:before { transform: translateX(26px); }
-        
-        .volume-slider {
-            width: 150px;
-            height: 4px;
-            -webkit-appearance: none;
-            background: #CF9B52;
-            border-radius: 2px;
-            outline: none;
-        }
-        
-        .volume-slider::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            width: 16px;
-            height: 16px;
-            border-radius: 50%;
-            background: #E5A93C;
-            cursor: pointer;
-        }
-        
-        .ranking-table {
-            width: 100%;
-            margin-top: 15px;
-            border-collapse: collapse;
-        }
-        
-        .ranking-table th, .ranking-table td {
-            padding: 10px;
-            text-align: center;
-            border-bottom: 1px solid rgba(207,155,82,0.2);
-            color: white;
-        }
-        
-        .ranking-table th { color: #E5A93C; font-weight: 600; }
-        .ranking-table .first-place { color: #FFD700; font-weight: bold; }
-        .ranking-table .second-place { color: #C0C0C0; font-weight: bold; }
-        
-        .friends-list { margin-top: 15px; }
-        
-        .friend-item {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            padding: 10px;
-            background: rgba(255,255,255,0.05);
-            border-radius: 20px;
-            margin-bottom: 10px;
-        }
-        
-        .friend-avatar {
-            font-size: 35px;
-            width: 50px;
-            height: 50px;
-            background: rgba(207,155,82,0.1);
-            border-radius: 25px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .friend-info { flex: 1; }
-        .friend-name { font-weight: 600; color: #E5A93C; }
-        .friend-date { font-size: 0.7rem; color: rgba(255,255,255,0.5); }
     </style>
 </head>
 <body>
 
-<!-- PAGE ACCUEIL -->
 <div id="welcomeScreen" class="container">
     <div class="header">
         <div class="title"><h1>SONGO'O<span>L'HÉRITAGE</span></h1></div>
     </div>
     <div class="panel" style="padding: 40px;">
         <div style="font-size: 60px; margin-bottom: 20px;">⚡</div>
-        <h1 style="font-size: 2rem; color: #E5A93C; margin-bottom: 10px;">SONGO'O</h1>
-        <p style="color: #CF9B52; letter-spacing: 4px; margin-bottom: 30px;">L'HÉRITAGE</p>
-        <div style="width: 80px; height: 2px; background: linear-gradient(90deg, transparent, #E5A93C, #CF9B52, transparent); margin: 0 auto 30px;"></div>
-        <button id="connectBtn" class="btn" style="padding: 12px 40px; font-size: 1.1rem;">🔗 CONNEXION</button>
+        <h1 style="font-size: 2rem; color: #E5A93C;">SONGO'O</h1>
+        <p style="color: #CF9B52; letter-spacing: 4px; margin: 20px 0;">L'HÉRITAGE</p>
+        <div style="width: 80px; height: 2px; background: #E5A93C; margin: 20px auto;"></div>
+        <button id="connectBtn" class="btn" style="padding: 12px 40px;">🔗 CONNEXION</button>
     </div>
     <div class="bottom-nav">
-        <div class="nav-item active" data-nav="play">🏠 <span>Jouer</span></div>
-        <div class="nav-item" data-nav="ranking">🏆 <span>Classement</span></div>
-        <div class="nav-item" data-nav="friends">👥 <span>Amis</span></div>
-        <div class="nav-item" data-nav="settings">⚙️ <span>Paramètres</span></div>
+        <div class="nav-item active" data-nav="play">🏠 Jouer</div>
+        <div class="nav-item" data-nav="ranking">🏆 Classement</div>
+        <div class="nav-item" data-nav="friends">👥 Amis</div>
+        <div class="nav-item" data-nav="settings">⚙️ Paramètres</div>
     </div>
 </div>
 
-<!-- PAGE SÉLECTION -->
 <div id="selectionScreen" class="container" style="display:none">
     <div class="header">
         <div class="title"><h1>SONGO'O<span>L'HÉRITAGE</span></h1></div>
         <button id="backToWelcomeBtn" class="btn-icon">←</button>
     </div>
-    
     <div class="panel">
         <h3>🎲 CRÉER UNE PARTIE</h3>
-        <div style="display: inline-block; background: rgba(76,175,80,0.2); color: #4caf50; padding: 4px 12px; border-radius: 20px; font-size: 0.7rem; margin-bottom: 10px;">⚔️ CAMP SUD</div>
+        <div style="background: rgba(76,175,80,0.2); color: #4caf50; padding: 4px 12px; border-radius: 20px; font-size: 0.7rem; display: inline-block;">⚔️ CAMP SUD</div>
         <input type="text" id="createPlayerName" class="room-input" placeholder="Ton pseudo" value="Guerrier">
         <div class="avatar-grid" id="createAvatarGrid">
             <div class="avatar-opt" data-avatar="🦁"><div class="avatar-icon">🦁</div><span>Lion</span></div>
@@ -618,10 +352,9 @@
         </div>
         <button id="createRoomBtn" class="btn">🎲 CRÉER LA PARTIE</button>
     </div>
-
     <div class="panel">
         <h3>🔑 REJOINDRE UNE PARTIE</h3>
-        <div style="display: inline-block; background: rgba(33,150,243,0.2); color: #2196f3; padding: 4px 12px; border-radius: 20px; font-size: 0.7rem; margin-bottom: 10px;">🌿 CAMP NORD</div>
+        <div style="background: rgba(33,150,243,0.2); color: #2196f3; padding: 4px 12px; border-radius: 20px; font-size: 0.7rem; display: inline-block;">🌿 CAMP NORD</div>
         <input type="text" id="joinPlayerName" class="room-input" placeholder="Ton pseudo" value="Guerrier">
         <div class="avatar-grid" id="joinAvatarGrid">
             <div class="avatar-opt" data-avatar="🦁"><div class="avatar-icon">🦁</div><span>Lion</span></div>
@@ -631,166 +364,62 @@
             <div class="avatar-opt" data-avatar="🐃"><div class="avatar-icon">🐃</div><span>Buffle</span></div>
             <div class="avatar-opt" data-avatar="🦒"><div class="avatar-icon">🦒</div><span>Girafe</span></div>
         </div>
-        <div style="display: flex; gap: 10px; justify-content: center; margin-top: 10px; flex-wrap: wrap;">
-            <input type="text" id="roomCodeInput" class="room-input" placeholder="Code de la salle" style="width: 150px;">
+        <div style="display: flex; gap: 10px; justify-content: center;">
+            <input type="text" id="roomCodeInput" class="room-input" placeholder="Code" style="width: 120px;">
             <button id="joinRoomBtn" class="btn">🔑 REJOINDRE</button>
         </div>
     </div>
-
     <div class="bottom-nav">
-        <div class="nav-item active" data-nav="play">🏠 <span>Jouer</span></div>
-        <div class="nav-item" data-nav="ranking">🏆 <span>Classement</span></div>
-        <div class="nav-item" data-nav="friends">👥 <span>Amis</span></div>
-        <div class="nav-item" data-nav="settings">⚙️ <span>Paramètres</span></div>
+        <div class="nav-item active" data-nav="play">🏠 Jouer</div>
+        <div class="nav-item" data-nav="ranking">🏆 Classement</div>
+        <div class="nav-item" data-nav="friends">👥 Amis</div>
+        <div class="nav-item" data-nav="settings">⚙️ Paramètres</div>
     </div>
 </div>
 
-<!-- PAGE JEU -->
 <div id="gameScreen" class="container" style="display:none">
     <div class="header">
         <div class="title"><h1>SONGO'O<span>L'HÉRITAGE</span></h1></div>
-        <div style="display: flex; gap: 8px; flex-wrap: wrap;">
-            <button id="aideBtn" class="btn-icon">❓</button>
-            <button id="settingsGameBtn" class="btn-icon">⚙️</button>
-            <button id="quitGameBtn" class="btn-icon">✕</button>
-        </div>
+        <div><button id="quitGameBtn" class="btn-icon">✕</button></div>
     </div>
-
     <div class="panel">
         <h3>🏠 SALLE : <span id="roomCodeDisplay" class="room-code-display">------</span>
-        <button id="copyCodeBtn" class="btn" style="padding: 5px 12px; font-size: 0.8rem;">📋 Copier</button></h3>
+        <button id="copyCodeBtn" class="btn" style="padding: 5px 12px;">📋 Copier</button></h3>
         <div id="connStatus" class="status waiting">🟡 En attente d'un adversaire...</div>
     </div>
-
     <div class="dashboard">
         <div class="player-dashboard sud-dashboard">
             <div class="player-avatar" id="myAvatar">🦁</div>
-            <div class="player-info">
-                <div class="player-name" id="myName">VOUS</div>
-                <div class="player-score" id="myScore">0</div>
-                <div class="player-side side-sud" id="mySide">⚔️ CAMP SUD</div>
-            </div>
+            <div><div id="myName">VOUS</div><div class="player-score" id="myScore">0</div><div class="side-sud">CAMP SUD</div></div>
             <div class="player-granary">🏺 <span id="myGranary">0</span></div>
         </div>
         <div class="vs-central">VS</div>
         <div class="player-dashboard nord-dashboard">
             <div class="player-avatar" id="oppAvatar">🐘</div>
-            <div class="player-info">
-                <div class="player-name" id="oppName">ADVERSAIRE</div>
-                <div class="player-score" id="oppScore">0</div>
-                <div class="player-side side-nord" id="oppSide">🌿 CAMP NORD</div>
-            </div>
+            <div><div id="oppName">ADVERSAIRE</div><div class="player-score" id="oppScore">0</div><div class="side-nord">CAMP NORD</div></div>
             <div class="player-granary">🏺 <span id="oppGranary">0</span></div>
         </div>
     </div>
-
-    <div class="turn-indicator">
-        <div class="turn-dot"></div>
-        <span>STATUT : </span>
-        <span id="gameStatus">Connexion...</span>
-    </div>
-
-    <div class="arrows-container">
-        <span class="arrow">→</span><span class="arrow">→</span><span class="arrow">→</span>
-        <span class="arrow">→</span><span class="arrow">→</span><span class="arrow">→</span>
-    </div>
-
+    <div class="turn-indicator"><div class="turn-dot"></div><span>STATUT : </span><span id="gameStatus">Connexion...</span></div>
+    <div class="arrows-container"><span class="arrow">→</span><span class="arrow">→</span><span class="arrow">→</span><span class="arrow">→</span><span class="arrow">→</span><span class="arrow">→</span></div>
     <div class="board-container">
         <div class="row"><div class="camp-label">CAMP NORD</div><div class="holes" id="opponentHoles"></div></div>
         <div style="height:1px; background:rgba(207,155,82,0.3); margin:15px 0"></div>
         <div class="row"><div class="camp-label">CAMP SUD</div><div class="holes" id="myHoles"></div></div>
     </div>
-
     <div class="message-area" id="gameMessage">🌐 En attente de connexion...</div>
-
-    <div class="action-buttons">
-        <button id="refreshBtn" class="action-btn">🔄 RAFRAÎCHIR</button>
-        <button id="resetGameBtn" class="action-btn">🔄 NOUVELLE PARTIE</button>
-    </div>
-
+    <div class="action-buttons"><button id="refreshBtn" class="action-btn">🔄 RAFRAÎCHIR</button><button id="resetGameBtn" class="action-btn">🔄 NOUVELLE PARTIE</button></div>
     <div class="bottom-nav">
-        <div class="nav-item active" data-nav="play">🏠 <span>Jouer</span></div>
-        <div class="nav-item" data-nav="ranking">🏆 <span>Classement</span></div>
-        <div class="nav-item" data-nav="friends">👥 <span>Amis</span></div>
-        <div class="nav-item" data-nav="settings">⚙️ <span>Paramètres</span></div>
+        <div class="nav-item active" data-nav="play">🏠 Jouer</div>
+        <div class="nav-item" data-nav="ranking">🏆 Classement</div>
+        <div class="nav-item" data-nav="friends">👥 Amis</div>
+        <div class="nav-item" data-nav="settings">⚙️ Paramètres</div>
     </div>
-</div>
-
-<!-- PAGE CLASSEMENT -->
-<div id="rankingScreen" class="container" style="display:none">
-    <div class="header">
-        <div class="title"><h1>SONGO'O<span>CLASSEMENT</span></h1></div>
-        <button id="backToGameFromRanking" class="btn-icon">←</button>
-    </div>
-    <div class="panel">
-        <h3>🏆 CLASSEMENT DES JOUEURS</h3>
-        <table class="ranking-table" id="rankingTable">
-            <thead><tr><th>Position</th><th>Joueur</th><th>Avatar</th><th>Victoires</th></tr></thead>
-            <tbody id="rankingBody"><tr><td colspan="4" style="text-align:center">Aucune partie terminée</td></tr></tbody>
-        更
-    </div>
-    <div class="bottom-nav">
-        <div class="nav-item" data-nav="play">🏠 <span>Jouer</span></div>
-        <div class="nav-item active" data-nav="ranking">🏆 <span>Classement</span></div>
-        <div class="nav-item" data-nav="friends">👥 <span>Amis</span></div>
-        <div class="nav-item" data-nav="settings">⚙️ <span>Paramètres</span></div>
-    </div>
-</div>
-
-<!-- PAGE AMIS -->
-<div id="friendsScreen" class="container" style="display:none">
-    <div class="header">
-        <div class="title"><h1>SONGO'O<span>AMIS</span></h1></div>
-        <button id="backToGameFromFriends" class="btn-icon">←</button>
-    </div>
-    <div class="panel">
-        <h3>👥 DERNIERS ADVERSAIRES</h3>
-        <div id="friendsList" class="friends-list"><div style="text-align:center; padding:20px; color:rgba(255,255,255,0.5)">Aucun adversaire rencontré</div></div>
-    </div>
-    <div class="bottom-nav">
-        <div class="nav-item" data-nav="play">🏠 <span>Jouer</span></div>
-        <div class="nav-item" data-nav="ranking">🏆 <span>Classement</span></div>
-        <div class="nav-item active" data-nav="friends">👥 <span>Amis</span></div>
-        <div class="nav-item" data-nav="settings">⚙️ <span>Paramètres</span></div>
-    </div>
-</div>
-
-<!-- PANELS -->
-<div id="aidePanel" class="aide-panel" style="display:none">
-    <div class="panel-header"><h3>📖 RÈGLES DU SONGO'O</h3><button class="close-panel">✕</button></div>
-    <div class="panel-body">
-        <div class="rule"><span>🎯</span><div><strong>BUT</strong><br>40 graines dans sa récolte</div></div>
-        <div class="rule"><span>🌾</span><div><strong>DÉPART</strong><br>2 rangées de 7 cases, 5 graines par case</div></div>
-        <div class="rule"><span>🔄</span><div><strong>TOUR</strong><br>Prends → Distribue → Récolte</div></div>
-        <div class="rule"><span>✨</span><div><strong>RÉCOLTE</strong><br>Si dernière graine tombe dans case adverse (2-4 graines)</div></div>
-        <div class="rule"><span>⛓️</span><div><strong>PRISE À LA CHAÎNE</strong><br>Récolte aussi les cases précédentes</div></div>
-        <div class="rule"><span>🏺</span><div><strong>GRENIER</strong><br>>13 graines → tour complet puis distribution adverse</div></div>
-    </div>
-    <button class="close-panel-btn">J'AI COMPRIS</button>
-</div>
-
-<div id="settingsPanel" class="settings-panel" style="display:none">
-    <div class="panel-header"><h3>⚙️ PARAMÈTRES</h3><button class="close-settings">✕</button></div>
-    <div class="panel-body">
-        <div class="setting-item">
-            <div class="setting-info"><span class="setting-icon">🔊</span><div><h4>Son</h4><p>Activer/désactiver les effets</p></div></div>
-            <label class="switch"><input type="checkbox" id="soundToggle" checked><span class="slider"></span></label>
-        </div>
-        <div class="setting-item">
-            <div class="setting-info"><span class="setting-icon">🎨</span><div><h4>Thème clair</h4><p>Passer en mode clair</p></div></div>
-            <label class="switch"><input type="checkbox" id="themeToggle"><span class="slider"></span></label>
-        </div>
-        <div class="setting-item">
-            <div class="setting-info"><span class="setting-icon">🎚️</span><div><h4>Volume</h4><p>Réglage du volume</p></div></div>
-            <input type="range" id="volumeSlider" min="0" max="100" value="70" class="volume-slider">
-        </div>
-    </div>
-    <button class="close-panel-btn close-settings-btn" id="saveSettingsBtn">💾 ENREGISTRER LES CHANGEMENTS</button>
 </div>
 
 <script>
     // ============================================
-    // CONFIGURATION - URL CORRECTE DU SERVEUR RENDER
+    // URL CORRECTE DU SERVEUR RENDER
     // ============================================
     const SERVER_URL = 'https://songo-2lxr.onrender.com';
     
@@ -799,132 +428,6 @@
     let opponentName = "ADVERSAIRE", opponentAvatar = "🐘";
     let gameLoop = null;
     
-    let friendsList = [];
-    let ranking = {};
-    
-    let soundEnabled = true;
-    let isLightTheme = false;
-    let currentVolume = 0.7;
-    
-    // ============================================
-    // THÈME
-    // ============================================
-    function applyTheme() {
-        if (isLightTheme) document.body.classList.add('light-theme');
-        else document.body.classList.remove('light-theme');
-    }
-    
-    document.getElementById('themeToggle').onchange = (e) => { isLightTheme = e.target.checked; applyTheme(); };
-    document.getElementById('soundToggle').onchange = (e) => { soundEnabled = e.target.checked; };
-    document.getElementById('volumeSlider').oninput = (e) => { currentVolume = e.target.value / 100; };
-    
-    document.getElementById('saveSettingsBtn').onclick = () => {
-        soundEnabled = document.getElementById('soundToggle').checked;
-        isLightTheme = document.getElementById('themeToggle').checked;
-        currentVolume = document.getElementById('volumeSlider').value / 100;
-        applyTheme();
-        document.getElementById('settingsPanel').style.display = 'none';
-        updateMessage("✅ Paramètres enregistrés !");
-    };
-    
-    // ============================================
-    // NAVIGATION
-    // ============================================
-    function showScreen(screenName) {
-        document.getElementById('welcomeScreen').style.display = screenName === 'welcome' ? 'block' : 'none';
-        document.getElementById('selectionScreen').style.display = screenName === 'selection' ? 'block' : 'none';
-        document.getElementById('gameScreen').style.display = screenName === 'game' ? 'block' : 'none';
-        document.getElementById('rankingScreen').style.display = screenName === 'ranking' ? 'block' : 'none';
-        document.getElementById('friendsScreen').style.display = screenName === 'friends' ? 'block' : 'none';
-        
-        if (screenName === 'ranking') updateRankingDisplay();
-        if (screenName === 'friends') updateFriendsDisplay();
-    }
-    
-    document.getElementById('connectBtn').onclick = () => showScreen('selection');
-    document.getElementById('backToWelcomeBtn').onclick = () => showScreen('welcome');
-    document.getElementById('backToGameFromRanking').onclick = () => showScreen('game');
-    document.getElementById('backToGameFromFriends').onclick = () => showScreen('game');
-    
-    document.querySelectorAll('.nav-item').forEach(item => {
-        item.onclick = () => {
-            const nav = item.dataset.nav;
-            if (nav === 'play') {
-                if (roomId) showScreen('game');
-                else showScreen('welcome');
-            } else if (nav === 'ranking') showScreen('ranking');
-            else if (nav === 'friends') showScreen('friends');
-            else if (nav === 'settings') document.getElementById('settingsPanel').style.display = 'block';
-        };
-    });
-    
-    document.querySelectorAll('.close-settings, .close-settings-btn').forEach(btn => {
-        if (btn.id !== 'saveSettingsBtn') btn.onclick = () => document.getElementById('settingsPanel').style.display = 'none';
-    });
-    
-    document.getElementById('aideBtn').onclick = () => document.getElementById('aidePanel').style.display = 'block';
-    document.querySelectorAll('.close-panel, .close-panel-btn').forEach(btn => {
-        btn.onclick = () => document.getElementById('aidePanel').style.display = 'none';
-    });
-    
-    // ============================================
-    // CLASSEMENT ET AMIS
-    // ============================================
-    function updateRankingAfterGame(winner, loser) {
-        if (!ranking[winner]) ranking[winner] = { wins: 0, avatar: "" };
-        if (!ranking[loser]) ranking[loser] = { wins: 0, avatar: "" };
-        ranking[winner].wins++;
-        ranking[winner].avatar = winner === playerName ? playerAvatar : opponentAvatar;
-        ranking[loser].avatar = loser === playerName ? playerAvatar : opponentAvatar;
-        updateRankingDisplay();
-    }
-    
-    function updateRankingDisplay() {
-        const tbody = document.getElementById('rankingBody');
-        const sorted = Object.entries(ranking).sort((a, b) => b[1].wins - a[1].wins);
-        if (sorted.length === 0) {
-            tbody.innerHTML = '<tr><td colspan="4" style="text-align:center">Aucune partie terminée</td></tr>';
-            return;
-        }
-        tbody.innerHTML = '';
-        sorted.forEach(([name, data], index) => {
-            const row = tbody.insertRow();
-            row.insertCell(0).innerHTML = index === 0 ? '🥇 1er' : index === 1 ? '🥈 2ème' : `${index + 1}ème`;
-            if (index === 0) { row.cells[0].className = 'first-place'; row.insertCell(1).className = 'first-place'; }
-            else if (index === 1) { row.cells[0].className = 'second-place'; row.insertCell(1).className = 'second-place'; }
-            row.insertCell(1).innerHTML = name;
-            row.insertCell(2).innerHTML = data.avatar || '🦁';
-            row.insertCell(3).innerHTML = data.wins;
-        });
-    }
-    
-    function addFriend(opponentName, opponentAvatar) {
-        const existing = friendsList.find(f => f.name === opponentName);
-        if (!existing) {
-            friendsList.unshift({ name: opponentName, avatar: opponentAvatar, date: new Date().toLocaleDateString() });
-            if (friendsList.length > 10) friendsList.pop();
-            updateFriendsDisplay();
-        }
-    }
-    
-    function updateFriendsDisplay() {
-        const container = document.getElementById('friendsList');
-        if (friendsList.length === 0) {
-            container.innerHTML = '<div style="text-align:center; padding:20px; color:rgba(255,255,255,0.5)">Aucun adversaire rencontré</div>';
-            return;
-        }
-        container.innerHTML = '';
-        friendsList.forEach(friend => {
-            const div = document.createElement('div');
-            div.className = 'friend-item';
-            div.innerHTML = `<div class="friend-avatar">${friend.avatar}</div><div class="friend-info"><div class="friend-name">${friend.name}</div><div class="friend-date">Dernière partie : ${friend.date}</div></div>`;
-            container.appendChild(div);
-        });
-    }
-    
-    // ============================================
-    // AVATARS
-    // ============================================
     let selectedCreateAvatar = "🦁";
     document.querySelectorAll('#createAvatarGrid .avatar-opt').forEach(opt => {
         opt.onclick = () => {
@@ -945,9 +448,19 @@
     });
     document.querySelector('#joinAvatarGrid .avatar-opt').classList.add('selected');
     
-    // ============================================
-    // CRÉER UNE PARTIE
-    // ============================================
+    function showScreen(screenName) {
+        document.getElementById('welcomeScreen').style.display = screenName === 'welcome' ? 'block' : 'none';
+        document.getElementById('selectionScreen').style.display = screenName === 'selection' ? 'block' : 'none';
+        document.getElementById('gameScreen').style.display = screenName === 'game' ? 'block' : 'none';
+    }
+    
+    document.getElementById('connectBtn').onclick = () => showScreen('selection');
+    document.getElementById('backToWelcomeBtn').onclick = () => showScreen('welcome');
+    document.getElementById('quitGameBtn').onclick = () => { if(confirm('Quitter ?')) location.reload(); };
+    document.getElementById('copyCodeBtn').onclick = () => { navigator.clipboard.writeText(roomId); alert('Code copié !'); };
+    document.getElementById('refreshBtn').onclick = () => fetchGameState();
+    document.getElementById('resetGameBtn').onclick = () => resetGame();
+    
     document.getElementById('createRoomBtn').onclick = async () => {
         playerName = document.getElementById('createPlayerName').value.trim() || "Guerrier";
         playerAvatar = selectedCreateAvatar;
@@ -967,18 +480,12 @@
             updateConnectionStatus('🟡 En attente d\'un adversaire...', 'waiting');
             startGameLoop();
             waitForOpponent();
-        } catch(e) { 
-            alert("Erreur de connexion au serveur.");
-            console.error(e);
-        }
+        } catch(e) { alert("Erreur de connexion au serveur."); }
     };
     
-    // ============================================
-    // REJOINDRE UNE PARTIE
-    // ============================================
     document.getElementById('joinRoomBtn').onclick = async () => {
         const code = document.getElementById('roomCodeInput').value.trim().toUpperCase();
-        if (!code) return alert("Entrez un code de salle");
+        if (!code) return alert("Entrez un code");
         playerName = document.getElementById('joinPlayerName').value.trim() || "Guerrier";
         playerAvatar = selectedJoinAvatar;
         try {
@@ -999,24 +506,12 @@
             document.getElementById('myAvatar').innerHTML = playerAvatar;
             document.getElementById('oppName').innerText = opponentName;
             document.getElementById('oppAvatar').innerHTML = opponentAvatar;
-            if (data.opponentName) {
-                updateConnectionStatus('🟢 Connecté ! La partie commence.', 'online');
-                startGameLoop();
-                fetchGameState();
-            } else {
-                updateConnectionStatus('🟡 En attente de l\'hôte...', 'waiting');
-                startGameLoop();
-                waitForGameStart();
-            }
-        } catch(e) { 
-            alert("Salle introuvable ou erreur de connexion");
-            console.error(e);
-        }
+            updateConnectionStatus('🟢 Connecté !', 'online');
+            startGameLoop();
+            fetchGameState();
+        } catch(e) { alert("Salle introuvable"); }
     };
     
-    // ============================================
-    // ATTENTE
-    // ============================================
     async function waitForOpponent() {
         const interval = setInterval(async () => {
             try {
@@ -1028,21 +523,8 @@
                     opponentAvatar = data.opponentAvatar;
                     document.getElementById('oppName').innerText = opponentName;
                     document.getElementById('oppAvatar').innerHTML = opponentAvatar;
-                    updateConnectionStatus('🟢 Adversaire trouvé ! La partie commence.', 'online');
+                    updateConnectionStatus('🟢 Adversaire trouvé !', 'online');
                     fetchGameState();
-                }
-            } catch(e) {}
-        }, 2000);
-    }
-    
-    async function waitForGameStart() {
-        const interval = setInterval(async () => {
-            try {
-                const res = await fetch(`${SERVER_URL}/api/room/${roomId}/state`);
-                const data = await res.json();
-                if (data && data.status === 'playing') {
-                    clearInterval(interval);
-                    updateConnectionStatus('🟢 Partie démarrée !', 'online');
                 }
             } catch(e) {}
         }, 2000);
@@ -1050,62 +532,46 @@
     
     function updateConnectionStatus(text, type) {
         const el = document.getElementById('connStatus');
-        if (el) { el.innerHTML = text; el.className = `status ${type}`; }
+        if(el) { el.innerHTML = text; el.className = `status ${type}`; }
     }
     
-    function updateMessage(msg) {
-        const msgEl = document.getElementById('gameMessage');
-        if (msgEl) msgEl.innerHTML = msg;
-    }
-    
-    // ============================================
-    // JEU
-    // ============================================
     function renderHoles(container, counts, isMy) {
         container.innerHTML = '';
         counts.forEach((count, idx) => {
             const hole = document.createElement('div');
             hole.className = 'hole';
-            for (let i = 0; i < count; i++) { const seed = document.createElement('div'); seed.className = 'seed'; hole.appendChild(seed); }
-            if (isMy && gameState?.status === 'playing' && gameState?.currentPlayer === myPlayer && count > 0) {
-                hole.onclick = () => sendMove(idx);
-            } else { hole.classList.add('disabled'); }
+            for(let i=0; i<count; i++) { const seed = document.createElement('div'); seed.className = 'seed'; hole.appendChild(seed); }
+            if(isMy && gameState?.status === 'playing' && gameState?.currentPlayer === myPlayer && count > 0) hole.onclick = () => sendMove(idx);
+            else hole.classList.add('disabled');
             container.appendChild(hole);
         });
     }
     
     async function sendMove(pitIndex) {
-        if (!gameState || gameState.status !== 'playing') return;
-        if (gameState.currentPlayer !== myPlayer) return;
-        if (gameState.board[myPlayer][pitIndex] === 0) return;
-        try {
-            await fetch(`${SERVER_URL}/api/room/${roomId}/move`, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ player: myPlayer, pitIndex })
-            });
-            await fetchGameState();
-        } catch(e) {}
+        if(!gameState || gameState.status !== 'playing') return;
+        if(gameState.currentPlayer !== myPlayer) return;
+        if(gameState.board[myPlayer][pitIndex] === 0) return;
+        await fetch(`${SERVER_URL}/api/room/${roomId}/move`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ player: myPlayer, pitIndex })
+        });
+        await fetchGameState();
     }
     
     async function fetchGameState() {
-        if (!roomId) return;
+        if(!roomId) return;
         try {
             const res = await fetch(`${SERVER_URL}/api/room/${roomId}/state`);
             const data = await res.json();
-            if (data.error) return;
-            if (gameState && gameState.status === 'playing' && data.status !== 'playing') {
-                if (data.winner === myPlayer) updateRankingAfterGame(playerName, opponentName);
-                else if (data.winner === (myPlayer === 'south' ? 'north' : 'south')) updateRankingAfterGame(opponentName, playerName);
-                addFriend(opponentName, opponentAvatar);
-            }
+            if(data.error) return;
             gameState = data;
             updateDisplay();
         } catch(e) {}
     }
     
     function updateDisplay() {
-        if (!gameState) return;
+        if(!gameState) return;
         const opponent = myPlayer === 'south' ? 'north' : 'south';
         renderHoles(document.getElementById('myHoles'), gameState.board[myPlayer], true);
         renderHoles(document.getElementById('opponentHoles'), gameState.board[opponent], false);
@@ -1115,13 +581,13 @@
         document.getElementById('oppGranary').innerText = gameState.scores[opponent];
         const statusEl = document.getElementById('gameStatus');
         const msgEl = document.getElementById('gameMessage');
-        if (gameState.status !== 'playing') {
-            if (gameState.winner === myPlayer) { statusEl.innerText = '🏆 VICTOIRE !'; msgEl.innerHTML = "🎉 BRAVO ! Tu as gagné !"; }
-            else if (gameState.winner === opponent) { statusEl.innerText = '💔 DÉFAITE'; msgEl.innerHTML = "😔 L'adversaire a gagné..."; }
-            else if (gameState.winner === 'draw') { statusEl.innerText = '🤝 MATCH NUL'; msgEl.innerHTML = "Match nul !"; }
-        } else if (gameState.currentPlayer === myPlayer) {
+        if(gameState.status !== 'playing') {
+            if(gameState.winner === myPlayer) statusEl.innerText = '🏆 VICTOIRE !';
+            else if(gameState.winner === opponent) statusEl.innerText = '💔 DÉFAITE';
+            else if(gameState.winner === 'draw') statusEl.innerText = '🤝 MATCH NUL';
+        } else if(gameState.currentPlayer === myPlayer) {
             statusEl.innerText = '🎯 À TOI DE JOUER';
-            msgEl.innerHTML = "Clique sur une case de ton camp";
+            msgEl.innerHTML = "Clique sur une case";
         } else {
             statusEl.innerText = '⏳ ATTENTE ADVERSAIRE';
             msgEl.innerHTML = "L'adversaire joue...";
@@ -1129,26 +595,25 @@
     }
     
     async function resetGame() {
-        if (confirm('Nouvelle partie ?')) {
+        if(confirm('Nouvelle partie ?')) {
             await fetch(`${SERVER_URL}/api/room/${roomId}/reset`, { method: 'POST' });
             await fetchGameState();
         }
     }
     
-    function quitGame() {
-        if (confirm('Quitter la partie ?')) { roomId = null; if (gameLoop) clearInterval(gameLoop); showScreen('welcome'); }
-    }
+    function startGameLoop() { if(gameLoop) clearInterval(gameLoop); gameLoop = setInterval(fetchGameState, 1500); fetchGameState(); }
     
-    function copyRoomCode() { navigator.clipboard.writeText(roomId); alert('Code copié !'); }
-    function startGameLoop() { if (gameLoop) clearInterval(gameLoop); gameLoop = setInterval(fetchGameState, 1500); fetchGameState(); }
-    
-    document.getElementById('quitGameBtn').onclick = quitGame;
-    document.getElementById('copyCodeBtn').onclick = copyRoomCode;
-    document.getElementById('refreshBtn').onclick = fetchGameState;
-    document.getElementById('resetGameBtn').onclick = resetGame;
-    document.getElementById('settingsGameBtn').onclick = () => document.getElementById('settingsPanel').style.display = 'block';
-    
-    applyTheme();
+    document.querySelectorAll('.nav-item').forEach(item => {
+        item.onclick = () => {
+            document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
+            item.classList.add('active');
+            const nav = item.dataset.nav;
+            if(nav === 'play') showScreen('game');
+            else if(nav === 'ranking') alert("🏆 Classement bientôt disponible");
+            else if(nav === 'friends') alert("👥 Amis bientôt disponible");
+            else if(nav === 'settings') alert("⚙️ Paramètres bientôt disponibles");
+        };
+    });
 </script>
 </body>
 </html>
