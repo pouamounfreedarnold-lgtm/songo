@@ -13,6 +13,11 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'distant.html'));
 });
 
+// ROUTE DE TEST GET (pour vérifier que l'API fonctionne)
+app.get('/api/room', (req, res) => {
+    res.json({ message: "API Songo'O est opérationnelle" });
+});
+
 // ============================================
 // CONSTANTES DU JEU
 // ============================================
@@ -256,6 +261,7 @@ function generateRoomId() {
     return Math.random().toString(36).substring(2, 8).toUpperCase();
 }
 
+// Route POST pour créer une salle
 app.post('/api/room', (req, res) => {
     const { playerName, playerAvatar } = req.body;
     const roomId = generateRoomId();
@@ -268,6 +274,7 @@ app.post('/api/room', (req, res) => {
     res.json({ roomId, player: "south" });
 });
 
+// Route POST pour rejoindre une salle
 app.post('/api/room/:roomId/join', (req, res) => {
     const room = rooms.get(req.params.roomId);
     if (!room) return res.json({ error: "Salle introuvable" });
@@ -286,6 +293,7 @@ app.post('/api/room/:roomId/join', (req, res) => {
     });
 });
 
+// Route GET pour vérifier le statut d'une salle
 app.get('/api/room/:roomId/status', (req, res) => {
     const room = rooms.get(req.params.roomId);
     if (!room) return res.json({ error: "Salle introuvable" });
@@ -297,12 +305,14 @@ app.get('/api/room/:roomId/status', (req, res) => {
     }
 });
 
+// Route GET pour obtenir l'état du jeu
 app.get('/api/room/:roomId/state', (req, res) => {
     const room = rooms.get(req.params.roomId);
     if (!room || !room.gameState) return res.json({ error: "Partie non démarrée" });
     res.json(room.gameState);
 });
 
+// Route POST pour jouer un coup
 app.post('/api/room/:roomId/move', (req, res) => {
     const room = rooms.get(req.params.roomId);
     if (!room || !room.gameState) return res.json({ error: "Partie non démarrée" });
@@ -311,6 +321,7 @@ app.post('/api/room/:roomId/move', (req, res) => {
     res.json({ ok: result.ok });
 });
 
+// Route POST pour réinitialiser la partie
 app.post('/api/room/:roomId/reset', (req, res) => {
     const room = rooms.get(req.params.roomId);
     if (!room) return res.json({ error: "Salle introuvable" });
@@ -318,6 +329,7 @@ app.post('/api/room/:roomId/reset', (req, res) => {
     res.json({ ok: true });
 });
 
+// Nettoyage des salles vides (toutes les 5 minutes)
 setInterval(() => {
     for (const [id, room] of rooms) {
         if (!room.gameStarted && Date.now() - room.createdAt > 300000) {
@@ -326,6 +338,7 @@ setInterval(() => {
     }
 }, 300000);
 
+// DÉMARRAGE DU SERVEUR
 app.listen(port, () => {
     console.log(`✅ Serveur Songo'O Distance - http://localhost:${port}`);
 });
