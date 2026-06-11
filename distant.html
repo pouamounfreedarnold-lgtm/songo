@@ -419,9 +419,9 @@
 
 <script>
     // ============================================
-    // URL CORRECTE DU SERVEUR RENDER
+    // URL CORRECTE - UTILISE L'URL ACTUELLE
     // ============================================
-    const SERVER_URL = 'https://songo-2lxr.onrender.com';
+    const SERVER_URL = window.location.origin;
     
     let roomId = null, myPlayer = null, gameState = null;
     let playerName = "", playerAvatar = "";
