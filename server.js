@@ -9,15 +9,13 @@ app.use(express.json());
 app.use(express.static(__dirname));
 
 // ============================================
-// ROUTE DE TEST POUR VÉRIFIER QUE L'API FONCTIONNE
+// ROUTES API
 // ============================================
+
 app.get('/api/room', (req, res) => {
     res.json({ message: "API Songo'O est opérationnelle" });
 });
 
-// ============================================
-// ROUTE PRINCIPALE - RENVOIE LE FICHIER HTML
-// ============================================
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'distant.html'));
 });
@@ -257,7 +255,7 @@ function applyMove(state, move) {
 }
 
 // ============================================
-// GESTION DES SALLES MULTIJOUEUR
+// GESTION DES SALLES
 // ============================================
 const rooms = new Map();
 
@@ -335,7 +333,6 @@ setInterval(() => {
     }
 }, 300000);
 
-// DÉMARRAGE DU SERVEUR
 app.listen(port, () => {
     console.log(`✅ Serveur Songo'O - http://localhost:${port}`);
 });
