@@ -318,6 +318,38 @@ app.post('/api/room/:roomId/move', (req, res) => {
     res.json({ ok: result.ok });
 });
 
+const express = require('express');
+const cors = require('cors');
+const path = require('path');
+const app = express();
+const port = process.env.PORT || 3000;
+
+app.use(cors());
+app.use(express.json());
+app.use(express.static(__dirname));
+
+// ============================================
+// ROUTE GET POUR TESTER L'API (AJOUTÉE)
+// ============================================
+app.get('/api/room', (req, res) => {
+    res.json({ message: "API Songo'O est opérationnelle" });
+});
+
+// ROUTE PRINCIPALE
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'distant.html'));
+});
+
+// ============================================
+// TOUT LE RESTE DE TON CODE (salles, règles, etc.)
+// ============================================
+// ... (garde tout ton code existant ici)
+// ...
+
+app.listen(port, () => {
+    console.log(`✅ Serveur Songo'O - http://localhost:${port}`);
+});
+
 app.post('/api/room/:roomId/reset', (req, res) => {
     const room = rooms.get(req.params.roomId);
     if (!room) return res.json({ error: "Salle introuvable" });
